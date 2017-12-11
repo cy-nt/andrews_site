@@ -1,0 +1,72 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+  <%= link_to 'Andrew Ellis', root_path, class: 'navbar-brand' %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Songs', songs_path, :class => 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Events', events_path, :class => 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Contact', inquiries_path, :class => 'nav-link' %>
+      </li>
+    </ul>
+    <ur>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%if user_signed_in? %>
+            <strong><%= current_user.email %></strong>
+          <%else%>
+            Register/Login
+          <%end%>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%if user_signed_in? %>
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'%>
+          <%else%>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link', :class => 'dropdown-item' %>
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link', :class => 'dropdown-item'  %>
+          <%end%>
+        </div>
+      </li>
+    </ur>
+  </div>
+</nav>
+
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark mb-4" style="background-color: #ad2b2b">
+  <div class="container">
+    <%= link_to 'Andrew Ellis', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_content" aria-controls="navbar_content" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div id="navbar_content" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+            Logged in as <strong><%= current_user.email %></strong>.
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %>
+        <%# Only display the current user's name, friend requests, and log out links if a user is logged in %>
+          <%#li class="nav-item"><%= link_to current_user.name, "/users/#{current_user.id}", class: 'nav-link' if logged_in?%></li>
+          <%#li class="nav-item"><%= link_to "Friend Requests", '/friend_requests', class: 'nav-link' if logged_in?%></li>
+          <%#li class="nav-item"><%= link_to "Log out", '/logout', method: :delete, class: 'nav-link' if logged_in?%></li>
+        <%# Only display the sign up and log in links if no user is logged in %>
+          <%#li class="nav-item"><%= link_to "Sign up", '/users/new', class: 'nav-link' unless logged_in?%></li>
+          <%#li class="nav-item"><%= link_to "Log in", '/login', class: 'nav-link' unless logged_in?%></li>
+      </ul>
+    <div>
+  </div>
+</nav>-->

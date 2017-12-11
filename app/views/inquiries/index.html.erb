@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-lg-6 offset-lg-3">
+    <div class="col-lg-8 order-1 order-lg-2">
+    <% if user_signed_in? %>
+      <div class="clearfix">
+        <% @inquiry = Inquiry.new %>
+        <%= render 'inquiries/form', inquiry: @inquiry %>
+      </div>
+    <br>
+    <% end %>
+    <% if @inquiries.empty? %>
+      <p class="text-center"> </p>
+    <% else %>
+      <% @inquiries.each do |i| %>
+        <%= render 'inquiries/inquiry', inquiry: @inquiry %>
+        <br>
+      <% end %>
+    <% end %>
+  </div>
+    <%if user_signed_in?%>
+    <h3>Current Inquiries</h3>
+    <!--need to find the right user's inquiries....-->
+      <% @inquiries.each do |i| %>
+        <p><%= i.text%></p>
+        <% end %>
+    <%end%>
+  </div>
+</div>
