@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-lg-6 offset-lg-3">
-    <div class="col-lg-8 order-1 order-lg-2">
+    <h3>Contact information: </h3>
+    <p>phone #: </p>
+    <p>email: ellis@gmail.com </p>
+    <h3></h3>
+    <h3>Or create an inquiry:</h3>
     <% if user_signed_in? %>
       <div class="clearfix">
         <% @inquiry = Inquiry.new %>
@@ -8,21 +12,21 @@
       </div>
     <br>
     <% end %>
-    <% if @inquiries.empty? %>
-      <p class="text-center"> </p>
-    <% else %>
-      <% @inquiries.each do |i| %>
-        <%= render 'inquiries/inquiry', inquiry: @inquiry %>
-        <br>
-      <% end %>
-    <% end %>
-  </div>
     <%if user_signed_in?%>
     <h3>Current Inquiries</h3>
-    <!--need to find the right user's inquiries....-->
+    <% if @inquiries.empty? %>
+      <p class="text-center">There aren't any inquiries right now </p>
+    <% else %>
       <% @inquiries.each do |i| %>
-        <p><%= i.text%></p>
-        <% end %>
+      <p><%=i.text%> (by <%=i.user.email%>)
+        <%if current_user.id.equal? i.user.id%>
+        <%= button_to 'delete inquiry', i, method: :delete, class: 'btn btn-danger' %></p>
+        <%end%>
+      </p>
+      <% end %>
+    <% end %>
+    <%else%>
+    Sign in to make an inquiry.
     <%end%>
   </div>
 </div>

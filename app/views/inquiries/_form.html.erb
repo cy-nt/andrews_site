@@ -18,27 +18,3 @@
 
     <%= f.submit class: 'btn btn-sm btn-primary float-right' %>
 <% end %>
-
-
-<!--div class="row">
-  <div class="col-lg-6 offset-lg-3">
-    <%= form_for inquiry, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-    <% if inquiry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(inquiry.errors.count, "error") %> prohibited this inquiry from being saved:</h2>
-      <ul>
-        <% inquiry.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-  </div>
-    <% end %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <div class="field form-group">
-          <%= f.text_area :text, rows: 3, class: 'form-control', placeholder: "" %>
-        </div>
-      <%= f.submit class: 'btn btn-sm btn-primary float-right' %>
-    <% end %>
-    <%= link_to 'See current inquiries', inquiries_path, class: 'button' %>
-</div>
-</div-->

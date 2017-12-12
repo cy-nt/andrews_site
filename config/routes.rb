@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :events
+  resources :feedbacks
   resources :inquiries
+  resources :events
   resources :songs
   devise_for :users
   root 'welcome#index'

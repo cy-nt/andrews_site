@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211161503) do
+ActiveRecord::Schema.define(version: 20171211214813) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -19,9 +19,19 @@ ActiveRecord::Schema.define(version: 20171211161503) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.string   "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["song_id"], name: "index_feedbacks_on_song_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
   create_table "inquiries", force: :cascade do |t|
     t.integer  "user_id"
-    t.text     "text"
+    t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_inquiries_on_user_id"

@@ -29,6 +29,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%if user_signed_in? %>
+          <%= link_to 'View profile', feedbacks_path, :class => 'dropdown-item' %>
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'%>
           <%else%>

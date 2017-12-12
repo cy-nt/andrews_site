@@ -1,0 +1,21 @@
+<%= form_for feedback do |f| %>
+  <% if feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(inquiry.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+      <ul>
+      <% feedback.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :song_id, value: song_id %> <!--THIS NEEDS TO CHANGE-->
+
+  <div class="field form-group">
+    <%= f.text_area :comment, rows: 3, class: 'form-control', placeholder: "" %>
+  </div>
+
+    <%= f.submit class: 'btn btn-sm btn-primary float-right' %>
+<% end %>
